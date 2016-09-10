@@ -15,12 +15,32 @@
 </head>
 
 <body>
-    <button onclick="location.reload(true)" style="position:absolute;right:0;top:0;background:white;z-index:9999;">pause/play</button>
+    <button onclick="location.reload(true)" style="position:absolute;right:0;top:0;background:grey;z-index:9999;">restart</button>
     <a-scene>
         <a-assets>
+            <a-mixin id="image1" geometry="height: 1; width: 5"></a-mixin>
+            <a-mixin id="image2" geometry="height: 2; width: 2"></a-mixin>
             <video id="video" src="city-4096-mp4-30fps-x264-ffmpeg-006.mp4" autoplay loop crossorigin webkit-playsinline></video>
+            <audio id="audio" src="01-Baby-To-Have-You-I-Have-To-Leave-You.m4a"></audio>
+            <img id="text1" src="creds.png">
+            <img id="text2" src="logo2.png">
         </a-assets>
+        <a-entity id="schematic-2" position="0 1 -2">
+            <a-image mixin="image1" src="#text2" scale="0.3 0.3 0.3" position="-1 1 1">
+                <a-animation attribute="visible" from="false" to="true" delay="1350" dur="1" fill="both"></a-animation>
+            </a-image>
+        </a-entity>
+        <a-entity id="schematic-1" position="-.7 -.1 -.9">
+            <a-image mixin="image2" src="#text1" scale="0.3 0.3 0.3" position="-.5 1.5 -.5">
+                <a-animation attribute="visible" from="false" to="true" delay="650" dur="500" fill="both"></a-animation>
+            </a-image>
+        </a-entity>
+
+
+
         <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
+        <!-- Sounds. -->
+        <a-entity sound="autoplay: true; src: #audio;"></a-entity>
     </a-scene>
 </body>
 
